@@ -1,0 +1,54 @@
+
+{% extends "base.html" %}
+
+{% block title %}Edit Student | StudentHub{% endblock %}
+{% block breadcrumb %}Students / Edit Student{% endblock %}
+{% block heading %}Edit Student{% endblock %}
+
+{% block content %}
+<section class="content-card form-card">
+    <h2>Update Student Details</h2>
+    <p class="form-description">
+        Student ID: #{{ student[0] }}
+    </p>
+
+    <form method="POST"
+          action="{{ url_for('students.edit_student', student_id=student[0]) }}">
+
+        <div class="mb-3">
+            <label for="name" class="form-label">Student Name *</label>
+            <input id="name" name="name" type="text"
+                   class="form-control"
+                   maxlength="100"
+                   value="{{ student[1] }}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address *</label>
+            <input id="email" name="email" type="email"
+                   class="form-control"
+                   maxlength="150"
+                   value="{{ student[2] }}" required>
+        </div>
+
+        <div class="mb-4">
+            <label for="phone" class="form-label">Phone Number *</label>
+            <input id="phone" name="phone" type="tel"
+                   class="form-control"
+                   pattern="[0-9]{7,15}"
+                   minlength="7" maxlength="15"
+                   value="{{ student[3] }}" required>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary add-button">
+                Update Student
+            </button>
+            <a href="{{ url_for('students.home') }}"
+               class="btn btn-outline-secondary">
+                Cancel
+            </a>
+        </div>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %}Student Details | StudentHub{% endblock %}
+{% block breadcrumb %}Students / View Student{% endblock %}
+{% block heading %}Student Details{% endblock %}
+
+{% block content %}
+<section class="content-card form-card">
+    <h2>{{ student[1] }}</h2>
+    <p class="form-description">
+        Complete details of the selected student.
+    </p>
+
+    <div class="detail-row">
+        <span>Student ID</span>
+        <strong>#{{ student[0] }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Student Name</span>
+        <strong>{{ student[1] }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Email Address</span>
+        <strong>{{ student[2] }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Phone Number</span>
+        <strong>{{ student[3] }}</strong>
+    </div>
+
+    <div class="form-actions mt-4">
+        <a href="{{ url_for('students.edit_student', student_id=student[0]) }}"
+           class="btn btn-primary">
+            Edit Details
+        </a>
+
+        <a href="{{ url_for('students.home') }}"
+           class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+</section>
+{% endblock %}
